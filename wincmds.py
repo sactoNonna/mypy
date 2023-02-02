@@ -18,7 +18,36 @@ def wcd(cdarg='-h', numlines=50, numcols=80):
         print(os.getcwd())
 #dir
 
-def wdir(dirarg='-h', numlines=50, numcols=80):
+#=========
+#diff
+        
+def diff(file1, file2):
+    import difflib
+ 
+    #with open('file1.txt') as file_1:
+    #    file_1_text = file_1.readlines()
+    #with open('file2.txt') as file_2:
+    #    file_2_text = file_2.readlines()
+    # Find and print the diff:
+    
+    f_out = open("diff.txt", "w")
+    for line in difflib.unified_diff(open(file1).readlines(), open(file2).readlines(), fromfile=file1, tofile=file2, lineterm=''):
+        print(line, file=f_out, end='')
+
+#differ
+
+def differ(file1, file2):
+    from difflib import Differ
+    #with open('file1.txt') as file_1, open('file2.txt') as file_2:
+    differ = Differ()
+    f_out = open("differ.txt", "w")
+    #for line in differ.compare(file_1.readlines(), file_2.readlines()):
+    for line in differ.compare(open(file1).readlines(), open(file2).readlines()):
+        print(line, file=f_out, end='')
+        
+#=========
+#
+#def wdir(dirarg='-h', numlines=50, numcols=80):
     if dirarg == "-h":
         print("\n  Usage: wdir(dirarg, numlines, numcols)")
         print("\n  dirarg\t= path to display (must be quoted)")
