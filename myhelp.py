@@ -1,4 +1,7 @@
 """
+Note: 
+These two class objects were taken from Programming Python by Mark Lutz.
+---
 File-like objects that are standard output text in a string and provide
 standard input text from a string; redirect runs a passed-in function
 with its output and input streams reset to these file-like class objects;
