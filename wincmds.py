@@ -1,5 +1,5 @@
 """
-    Implement Windows internal commands my way for IDLE
+    Implement Windows internal commands & some more tools in my way for IDLE
 """
 
 import os
