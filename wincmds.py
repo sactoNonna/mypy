@@ -5,8 +5,7 @@
 import os
 from mymores import moretext, morelist
 
-#cd - to be added
-
+#cd
 def wcd(cdarg='-h', numlines=50, numcols=80):
     if cdarg == "-h":
         print("\n\tUsage  \t: wcd(cdarg)")
@@ -16,38 +15,26 @@ def wcd(cdarg='-h', numlines=50, numcols=80):
     else:
         os.chdir(cdarg)
         print(os.getcwd())
-#dir
-
-#=========
-#diff
         
+#diff - Since this is not a DOS internal command, won't rename it as wdiff
+# Compare two files and store the difference in "diff.txt" file
 def diff(file1, file2):
     import difflib
- 
-    #with open('file1.txt') as file_1:
-    #    file_1_text = file_1.readlines()
-    #with open('file2.txt') as file_2:
-    #    file_2_text = file_2.readlines()
-    # Find and print the diff:
-    
     f_out = open("diff.txt", "w")
     for line in difflib.unified_diff(open(file1).readlines(), open(file2).readlines(), fromfile=file1, tofile=file2, lineterm=''):
         print(line, file=f_out, end='')
 
-#differ
-
+#differ - Since this is not a DOS intenal command, won't rename it as wdiffer
+# Use Python's differ module to compare two files and store the difference in "differ.txt" file
 def differ(file1, file2):
     from difflib import Differ
-    #with open('file1.txt') as file_1, open('file2.txt') as file_2:
     differ = Differ()
     f_out = open("differ.txt", "w")
-    #for line in differ.compare(file_1.readlines(), file_2.readlines()):
     for line in differ.compare(open(file1).readlines(), open(file2).readlines()):
         print(line, file=f_out, end='')
         
-#=========
-#
-#def wdir(dirarg='-h', numlines=50, numcols=80):
+# dir
+def wdir(dirarg='-h', numlines=50, numcols=80):
     if dirarg == "-h":
         print("\n  Usage: wdir(dirarg, numlines, numcols)")
         print("\n  dirarg\t= path to display (must be quoted)")
@@ -61,7 +48,6 @@ def differ(file1, file2):
         moretext(os.popen(dircmd).read(), numlines, numcols)
         
 #del
-
 def wdel(delarg='-h', numlines=50, numcols=80):
     if delarg == "-h":
         print("\n\tUsage\t: wdel(delarg)")
@@ -73,7 +59,6 @@ def wdel(delarg='-h', numlines=50, numcols=80):
     return
 
 #find
-
 def wfind(option='', findstr='-h', rootpath='.', ftype='.py', numlines=50, numcols=80):
     if findstr == "-h":
         print("\n  Usage  : wfind('', 'findstr', 'filename', numlines, numcols), or")
@@ -97,7 +82,6 @@ def wfind(option='', findstr='-h', rootpath='.', ftype='.py', numlines=50, numco
         morelist(matches, numlines, numcols)
         
 # ren
-
 def wren(cmdstring='-h'):
     if cmdstring == "-h":
         print("\n\tUsage\t: wren(cmdstring)")
@@ -107,10 +91,8 @@ def wren(cmdstring='-h'):
     rencmd = 'ren' + ' ' + str(cmdstring)
     os.system(rencmd)
     return
-
         
 #   type -
-
 def wtype(cmdstring='-h', numlines=50, numcols=80):
     if cmdstring == "-h":
         print("\n\tUsage\t: wtype(cmdstring, numlines, numcols)")
@@ -140,5 +122,3 @@ if __name__ == '__main__':
            s += key + ', '
     print("\nEmulatd DOS command list:\n\t", end='')
     moretext(s[:-2])
-
-
